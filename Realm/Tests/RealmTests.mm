@@ -877,4 +877,13 @@
         XCTAssertEqual(1U, [IntObject allObjectsInRealm:copy].count);
     }];
 }
+
+- (void)testBadEncryptionKeys
+{
+    XCTAssertThrows([RLMRealm encryptedRealmWithPath:RLMRealm.defaultRealmPath key:nil readOnly:NO error:nil]);
+    XCTAssertThrows([RLMRealm encryptedRealmWithPath:RLMRealm.defaultRealmPath key:[NSData data] readOnly:NO error:nil]);
+    XCTAssertThrows([RLMRealm migrateEncryptedRealmAtPath:RLMRealm.defaultRealmPath key:nil]);
+    XCTAssertThrows([RLMRealm migrateEncryptedRealmAtPath:RLMRealm.defaultRealmPath key:[NSData data]]);
+}
+
 @end
