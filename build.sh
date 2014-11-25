@@ -269,7 +269,6 @@ case "$COMMAND" in
         set +e # Run both sets of tests even if the first fails
         failed=0
         sh build.sh test-ios "$XCMODE" || failed=1
-        sh build.sh test-ios-devices "$XCMODE" || failed=1
         sh build.sh test-osx "$XCMODE" || failed=1
         exit $failed
         ;;
@@ -278,7 +277,6 @@ case "$COMMAND" in
         set +e
         failed=0
         sh build.sh test-ios-debug "$XCMODE" || failed=1
-        sh build.sh test-ios-devices-debug "$XCMODE" || failed=1
         sh build.sh test-osx-debug "$XCMODE" || failed=1
         exit $failed
         ;;
